@@ -356,6 +356,7 @@ public class KarafBoot implements IPentahoSystemListener {
     fillMissedSystemProperty( "karaf.startRemoteShell", "true" );
     fillMissedSystemProperty( "karaf.lock", "false" );
     fillMissedSystemProperty( "karaf.etc", root + "/etc" );
+    fillMissedSystemProperty( "karaf.log", solutionRootPath + "/logs" );
 
     // When running in the PDI-Clients there are separate etc directories so that features can be customized for
     // the particular execution needs (Carte, Spoon, Pan, Kitchen)
@@ -382,7 +383,8 @@ public class KarafBoot implements IPentahoSystemListener {
     }
     // Setting ignoreTCL to true such that the OSGI classloader used to initialize log4j will be the
     // same one used when instatiating appenders.
-    System.setProperty( "log4j.ignoreTCL", "true" );
+    // KARAF UPGRADE WIP: Temporarily (or not) setting to false
+    System.setProperty( "log4j.ignoreTCL", "false" );
   }
 
   /**
